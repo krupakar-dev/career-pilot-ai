@@ -12,7 +12,7 @@ const Button=({
     "inline-flex items-center justify-center font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50";
     const variantStyles={
         primary:"bg-indigo-600 text-white hover:bg-indigo-700",
-        secondary:"bg-transparent text-white hover:bg-slate-700",
+       secondary:"bg-slate-800 text-white hover:bg-slate-900",
         outline:
         "border border-slate-300 bg-transparent text-slate-700 hover:bg-slate-100",
         ghost:"bg-transparent text-slate-700 hover:bg-slate-700",
