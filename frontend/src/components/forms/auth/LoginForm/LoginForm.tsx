@@ -19,6 +19,11 @@ export function LoginForm() {
     password?: string;
   }>({});
 
+  const [touched, setTouched] = useState<{
+    email?: boolean;
+    password?: boolean;
+  }>({});
+
   const validate = () => {
     const newErrors: {
       email?: string;
@@ -34,7 +39,8 @@ export function LoginForm() {
     if (!password) {
       newErrors.password = "Password is required.";
     } else if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters.";
+      newErrors.password =
+        "Password must be at least 6 characters.";
     }
 
     setErrors(newErrors);
@@ -47,7 +53,16 @@ export function LoginForm() {
   ) => {
     event.preventDefault();
 
+    setTouched({
+      email: true,
+      password: true,
+    });
+
     if (!validate()) {
+      return;
+    }
+
+    if (isLoading) {
       return;
     }
 
@@ -83,14 +98,41 @@ export function LoginForm() {
           placeholder="you@example.com"
           value={email}
           onChange={(event) => {
-            setEmail(event.target.value);
+            const value = event.target.value;
 
-            if (errors.email) {
+            setEmail(value);
+
+            if (touched.email) {
+              const newError = !value.trim()
+                ? "Email address is required."
+                : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+                  ? "Please enter a valid email address."
+                  : undefined;
+
               setErrors((previous) => ({
                 ...previous,
-                email: undefined,
+                email: newError,
               }));
             }
+          }}
+          onBlur={() => {
+            setTouched((previous) => ({
+              ...previous,
+              email: true,
+            }));
+
+            const value = email.trim();
+
+            const newError = !value
+              ? "Email address is required."
+              : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+                ? "Please enter a valid email address."
+                : undefined;
+
+            setErrors((previous) => ({
+              ...previous,
+              email: newError,
+            }));
           }}
         />
 
@@ -117,14 +159,39 @@ export function LoginForm() {
             placeholder="Enter your password"
             value={password}
             onChange={(event) => {
-              setPassword(event.target.value);
+              const value = event.target.value;
 
-              if (errors.password) {
+              setPassword(value);
+
+              if (touched.password) {
+                const newError = !value
+                  ? "Password is required."
+                  : value.length < 6
+                    ? "Password must be at least 6 characters."
+                    : undefined;
+
                 setErrors((previous) => ({
                   ...previous,
-                  password: undefined,
+                  password: newError,
                 }));
               }
+            }}
+            onBlur={() => {
+              setTouched((previous) => ({
+                ...previous,
+                password: true,
+              }));
+
+              const newError = !password
+                ? "Password is required."
+                : password.length < 6
+                  ? "Password must be at least 6 characters."
+                  : undefined;
+
+              setErrors((previous) => ({
+                ...previous,
+                password: newError,
+              }));
             }}
             className="pr-11"
           />
@@ -244,7 +311,7 @@ export function LoginForm() {
         Don't have an account?{" "}
         <Link
           to="/register"
-          className="font-semibold text-indigo-600 transition-colors hover:text-indigo-700"
+          className="font-semibold text-indigo-600 hover:text-indigo-700"
         >
           Register
         </Link>
