@@ -259,7 +259,7 @@ export function LoginForm() {
         <div className="h-px flex-1 bg-slate-200" />
 
         <span className="text-sm text-slate-400">
-          or continue with
+          or continue 
         </span>
 
         <div className="h-px flex-1 bg-slate-200" />
