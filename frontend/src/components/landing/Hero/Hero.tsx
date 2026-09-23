@@ -5,7 +5,7 @@ import { Badge } from "../../ui/Badge";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-slate-50">
+    <section className="font-body relative overflow-hidden bg-slate-50">
       {/* Background decoration */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-indigo-200/30 blur-3xl" />
@@ -23,14 +23,14 @@ export function Hero() {
 
             {/* Eyebrow */}
             <div className="mb-6">
-              <Badge variant="info" size="md">
+              <Badge variant="info" size="md" className="font-heading">
                 <Sparkles size={14} />
                 AI-Powered Career Intelligence
               </Badge>
             </div>
 
             {/* Heading */}
-            <h1 className="text-4xl font-bold leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+            <h1 className="font-heading text-4xl font-bold leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
               Navigate Your Career{" "}
               <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-blue-600 bg-clip-text text-transparent">
                 with AI
@@ -49,6 +49,7 @@ export function Hero() {
               <Button
                 variant="primary"
                 size="lg"
+                className="font-heading shadow-lg shadow-indigo-600/20"
                 onClick={() => {
                   window.location.href = "/register";
                 }}
@@ -59,9 +60,9 @@ export function Hero() {
 
               <a href="#features">
                 <Button
-  variant="secondary"
+  variant="outline"
   size="lg"
-  className="w-full sm:w-auto"
+  className="font-heading w-full bg-white sm:w-auto"
   onClick={() => {
     document
       .getElementById("features")
@@ -117,7 +118,7 @@ export function Hero() {
                     Career Intelligence
                   </p>
 
-                  <h2 className="mt-1 text-lg font-semibold text-slate-900">
+                  <h2 className="font-heading mt-1 text-lg font-semibold text-slate-900">
                     Job Match Analysis
                   </h2>
                 </div>
@@ -135,7 +136,7 @@ export function Hero() {
                       Overall Match
                     </p>
 
-                    <p className="mt-1 text-4xl font-bold tracking-tight text-slate-950">
+                    <p className="font-heading mt-1 text-4xl font-bold tracking-tight text-slate-950">
                       87%
                     </p>
                   </div>

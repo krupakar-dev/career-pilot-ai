@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-
+import careerPilotLogo from "../../../assets/branding/careerpilot-logo.png";
 import { Button } from "../../ui/Button";
 import { cn } from "../../../utils/cn";
+import { useTransparentLogo } from "../../../utils/useTransparentLogo";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const logoSrc = useTransparentLogo(careerPilotLogo);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -74,25 +76,24 @@ export function Navbar() {
         {/* Brand */}
         <Link
           to="/"
+          aria-label="CareerPilot AI home"
           onClick={() => {
-            closeMenu();
             setActiveSection("");
+            closeMenu();
+
             window.scrollTo({
               top: 0,
               behavior: "smooth",
             });
           }}
-          className="flex shrink-0 items-center gap-2.5"
-          aria-label="CareerPilot AI Home"
+          className="flex h-10 w-12 items-center justify-center overflow-visible"
         >
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-sm font-bold text-white shadow-sm">
-            CP
-          </div>
-
-          <span className="text-lg font-semibold tracking-tight text-slate-900">
-            CareerPilot{" "}
-            <span className="text-indigo-600">AI</span>
-          </span>
+          <img
+            src={logoSrc}
+            alt="CareerPilot AI"
+            className="h-12 w-12 max-w-none scale-[3] object-contain"
+            draggable={false}
+          />
         </Link>
 
         {/* Desktop Navigation */}

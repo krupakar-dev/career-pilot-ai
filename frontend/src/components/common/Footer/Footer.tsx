@@ -4,6 +4,8 @@ import {
   Sparkles,
   
 } from "lucide-react";
+import {FcGoogle} from "react-icons/fc";
+import {FaLinkedinIn, FaGithub} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const productLinks = [
@@ -65,17 +67,17 @@ export function Footer() {
   <a
     href="#"
     aria-label="GitHub"
-    className="flex h-9 items-center justify-center rounded-lg border border-slate-200 px-3 text-xs font-medium text-slate-500 transition-colors hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600"
+    className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-colors hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600"
   >
-    GitHub
+    <FaGithub size={17} />
   </a>
 
   <a
     href="#"
     aria-label="LinkedIn"
-    className="flex h-9 items-center justify-center rounded-lg border border-slate-200 px-3 text-xs font-medium text-slate-500 transition-colors hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600"
+    className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition-colors hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600"
   >
-    LinkedIn
+    <FaLinkedinIn size={17} />
   </a>
 
   <a
